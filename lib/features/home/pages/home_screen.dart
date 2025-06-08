@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loopi_admin/features/home/cubits/driver_list_cubit/cubit/drivers_list_cubit.dart';
 import 'package:loopi_admin/features/home/cubits/driver_register_cubit/cubit/driver_register_cubit.dart';
+import 'package:loopi_admin/features/home/widgets/driver_list.dart';
 import 'package:loopi_admin/features/home/widgets/register_driver_body.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -31,6 +33,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 child: Column(
                   children: [
+
+                    if(_selectedScreenIndex == 7)
+                      BlocProvider(
+                        create: (context) => DriversListCubit(),
+                        child: DriverList(),
+                      ),
                     if (_selectedScreenIndex == 8)
                       BlocProvider(
                         create: (context) => DriverRegisterCubit(),
@@ -92,17 +100,38 @@ class _HomeScreenState extends State<HomeScreen> {
                       Text('الرحلات المعلقة'),
                       SizedBox(height: 20),
                       Divider(height: 1, color: Colors.grey),
-                      Divider(height: 1, color: Colors.grey),
+                      
                       SizedBox(height: 20),
                       Text('رسائل العملاء'),
                       SizedBox(height: 20),
                       Divider(height: 1, color: Colors.grey),
-                      Divider(height: 1, color: Colors.grey),
+                     
                       SizedBox(height: 20),
                       Text(' رسائل السائقين'),
                       SizedBox(height: 20),
-                      Divider(height: 1, color: Colors.grey),
-                      Divider(height: 1, color: Colors.grey),
+                        Divider(height: 2, color: Colors.black),
+
+                      InkWell(
+                        onTap: () {
+                          _selectedScreenIndex = 7;
+                          setState(() {});
+                        },
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 20.0,
+                            horizontal: 5,
+                          ),
+                          child: Text(
+                            'قائمة السائقين',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Divider(height: 2, color: Colors.black),
 
                       InkWell(
                         onTap: () {

@@ -1,12 +1,12 @@
 class DriverModel {
-  final String id;
-  final String name;
-  final String phoneNumber;
-  final String address;
-  final String fromCity;
-  final String toCity;
-  final String plateNumber;
-  final int seats;
+  final String? id;
+  final String? name;
+  final String? phoneNumber;
+  final String? address;
+  final String? fromCity;
+  final String? toCity;
+  final String? plateNumber;
+  final int? seats;
   
 
   DriverModel({
