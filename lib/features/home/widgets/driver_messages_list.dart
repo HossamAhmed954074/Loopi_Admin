@@ -1,10 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loopi_admin/features/home/cubits/messages_cubit/cubit/message_cubit.dart';
 import 'package:loopi_admin/features/home/models/message_model.dart';
-
-
 
 class DriverMessagesList extends StatefulWidget {
   const DriverMessagesList({super.key});
@@ -14,10 +11,9 @@ class DriverMessagesList extends StatefulWidget {
 }
 
 class _DriverMessagesListState extends State<DriverMessagesList> {
-   String? val ='';
+  String? val = '';
   @override
   Widget build(BuildContext context) {
-   
     return BlocProvider(
       create: (context) => MessageCubit(),
       child: Container(
@@ -33,7 +29,9 @@ class _DriverMessagesListState extends State<DriverMessagesList> {
           children: [
             Expanded(
               flex: 4,
-              child: val!.isEmpty ? SizedBox() : MessageScreen(parameter: val ?? ''),
+              child: val!.isEmpty
+                  ? SizedBox()
+                  : MessageScreen(parameter: val ?? ''),
             ),
             SizedBox(width: 10),
             Expanded(
@@ -43,10 +41,8 @@ class _DriverMessagesListState extends State<DriverMessagesList> {
                 child: DriversMessagesListName(
                   messageIndex: (messageindex) {
                     val = messageindex;
-                    
-                    setState(() {
-                      
-                    });
+
+                    setState(() {});
                   },
                 ),
               ),
@@ -96,13 +92,8 @@ class DriversMessagesListName extends StatelessWidget {
                   return InkWell(
                     onTap: () {
                       messageIndex(messageList[index]);
-                      
-                      
                     },
-                    child: DriverMessageItem(
-                      messageDriver: messageList[index],
-                     
-                    ),
+                    child: DriverMessageItem(messageDriver: messageList[index]),
                   );
                 },
               ),
@@ -115,13 +106,9 @@ class DriversMessagesListName extends StatelessWidget {
 }
 
 class DriverMessageItem extends StatelessWidget {
-  const DriverMessageItem({
-    super.key,
-    required this.messageDriver,
-  
-  });
+  const DriverMessageItem({super.key, required this.messageDriver});
   final String messageDriver;
- 
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -132,7 +119,7 @@ class DriverMessageItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
+            color: Colors.grey.withValues(alpha: 0.2),
             spreadRadius: 1,
             blurRadius: 5,
             offset: Offset(0, 3), // changes position of shadow
@@ -140,11 +127,7 @@ class DriverMessageItem extends StatelessWidget {
         ],
       ),
       child: ListTile(
-        leading: Icon(
-          Icons.arrow_left_outlined,
-          color: Colors.blue,
-          size: 30,
-        ),
+        leading: Icon(Icons.arrow_left_outlined, color: Colors.blue, size: 30),
         title: Text(
           messageDriver,
           style: TextStyle(fontWeight: FontWeight.bold),
@@ -188,12 +171,15 @@ class MessageScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Center(
-                  child: Text(parameter,style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),),
-                )
+                  child: Text(
+                    parameter,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -217,7 +203,7 @@ class MessageScreen extends StatelessWidget {
                         : BubbleChatPost(masseage: messageList[index].message),
                   );
                 }
-                return Center(child: Text('Not have message'));
+                return Center(child: Text('لا توجد رسائل'));
               },
             ),
           ),
@@ -289,8 +275,8 @@ class SendMasseageTextFaildCustomWidget extends StatelessWidget {
 }
 
 class BubbleChatGet extends StatelessWidget {
-  BubbleChatGet({required this.masseage, super.key});
-  String masseage;
+  const BubbleChatGet({required this.masseage, super.key});
+  final String masseage;
   @override
   Widget build(BuildContext context) {
     return Align(

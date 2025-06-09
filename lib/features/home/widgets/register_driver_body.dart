@@ -107,7 +107,7 @@ class RegisterDriverBody extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       AuthTextFormField(
-                        labelText: 'الي مدينة',
+                        labelText: 'الي جامعة',
                         controller: toCityController,
                       ),
                       const SizedBox(height: 10),

@@ -4,6 +4,7 @@ import 'package:loopi_admin/features/home/cubits/client_list_cubit/cubit/clint_l
 import 'package:loopi_admin/features/home/cubits/driver_list_cubit/cubit/drivers_list_cubit.dart';
 import 'package:loopi_admin/features/home/cubits/driver_register_cubit/cubit/driver_register_cubit.dart';
 import 'package:loopi_admin/features/home/widgets/client_list.dart';
+import 'package:loopi_admin/features/home/widgets/client_messages_list.dart';
 import 'package:loopi_admin/features/home/widgets/driver_list.dart';
 import 'package:loopi_admin/features/home/widgets/driver_messages_list.dart';
 import 'package:loopi_admin/features/home/widgets/register_driver_body.dart';
@@ -20,7 +21,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Admin Controller Home')),
+      appBar: AppBar(
+        title: Text('الصفحة الرئيسية لوحدة التحكم الإدارية Loopi'),
+        backgroundColor: Colors.blueGrey.withAlpha(80),
+        centerTitle: true,
+        elevation: 0,
+      ),
 
       body: SingleChildScrollView(
         child: Row(
@@ -36,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 child: Column(
                   children: [
+                    if (_selectedScreenIndex == 4) ClientMessagesList(),
                     if (_selectedScreenIndex == 5)
                       BlocProvider(
                         create: (context) => ClintListCubit(),
@@ -58,16 +65,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           SizedBox(height: 20),
                           Text(
-                            'Welcome to Admin Controller',
+                            'مرحبًا بك في وحدة التحكم الإدارية',
                             style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           SizedBox(height: 20),
-                          Text(
-                            'Select an option from the menu to get started.',
-                          ),
+                          Text('حدد خيارًا من القائمة للبدء'),
                         ],
                       ),
                   ],
@@ -109,10 +114,27 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(height: 20),
                       Divider(height: 1, color: Colors.grey),
 
-                      SizedBox(height: 20),
-                      Text('رسائل العملاء'),
-                      SizedBox(height: 20),
-                      Divider(height: 1, color: Colors.grey),
+                      InkWell(
+                        onTap: () {
+                          _selectedScreenIndex = 4;
+                          setState(() {});
+                        },
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 20.0,
+                            horizontal: 5,
+                          ),
+                          child: Text(
+                            'رسائل العملاء ',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Divider(height: 2, color: Colors.black),
 
                       InkWell(
                         onTap: () {

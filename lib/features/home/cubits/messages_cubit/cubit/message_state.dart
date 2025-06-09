@@ -31,3 +31,15 @@ final class MessageAllDriverSuccess extends MessageState {
 }
 
 
+final class MessageAllClientLoading extends MessageState {}
+
+final class MessageAllClientFaluire extends MessageState {
+  final String erroeMessages;
+  MessageAllClientFaluire({required this.erroeMessages});
+}
+final class MessageAllClientSuccess extends MessageState {
+  final List<String> allClientmessages;
+  MessageAllClientSuccess({required this.allClientmessages});
+}
+
+
