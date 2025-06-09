@@ -162,44 +162,73 @@ class MessageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TextEditingController controller = TextEditingController();
+    // ignore: no_leading_underscores_for_local_identifiers
     final _controller = ScrollController();
     List<MessageModel> messageList = [];
     // todo here add email of driver to get the message
     BlocProvider.of<MessageCubit>(context).getDate(auth: parameter);
 
-    return Column(
-      children: [
-        Expanded(
-          child: BlocConsumer<MessageCubit, MessageState>(
-            listener: (context, state) {
-              if (state is MessageLoaded) {
-                messageList = state.messages;
-              }
-            },
-            builder: (context, state) {
-              if (state is MessageLoaded) {
-                return ListView.builder(
-                  reverse: true,
-                  controller: _controller,
-                  physics: BouncingScrollPhysics(),
-                  itemCount: messageList.length,
-                  itemBuilder: (context, index) =>
-                      'admin1@gmail.com' == messageList[index].id
-                      ? BubbleChatGet(masseage: messageList[index].message)
-                      : BubbleChatPost(masseage: messageList[index].message),
-                );
-              }
-              return Center(child: Text('Not have message'));
-            },
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        children: [
+          Container(
+            height: 40,
+            decoration: BoxDecoration(
+              color: Colors.blue,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(
+                  child: Text(parameter,style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),),
+                )
+              ],
+            ),
           ),
-        ),
-        SizedBox(height: 100),
-        SendMasseageTextFaildCustomWidget(
-          parameter: parameter,
-          controller: controller,
-          scrollController: _controller,
-        ),
-      ],
+          Expanded(
+            child: BlocConsumer<MessageCubit, MessageState>(
+              listener: (context, state) {
+                if (state is MessageLoaded) {
+                  messageList = state.messages;
+                }
+              },
+              builder: (context, state) {
+                if (state is MessageLoaded) {
+                  return ListView.builder(
+                    reverse: true,
+                    controller: _controller,
+                    physics: BouncingScrollPhysics(),
+                    itemCount: messageList.length,
+                    itemBuilder: (context, index) =>
+                        'admin1@gmail.com' == messageList[index].id
+                        ? BubbleChatGet(masseage: messageList[index].message)
+                        : BubbleChatPost(masseage: messageList[index].message),
+                  );
+                }
+                return Center(child: Text('Not have message'));
+              },
+            ),
+          ),
+          SizedBox(height: 100),
+          SendMasseageTextFaildCustomWidget(
+            parameter: parameter,
+            controller: controller,
+            scrollController: _controller,
+          ),
+        ],
+      ),
     );
   }
 }

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:loopi_admin/features/home/cubits/driver_list_cubit/cubit/drivers_list_cubit.dart';
-import 'package:loopi_admin/features/home/models/driver_model.dart';
+import 'package:loopi_admin/features/home/cubits/client_list_cubit/cubit/clint_list_cubit.dart';
+import 'package:loopi_admin/features/home/models/client_model.dart';
 
-class DriverList extends StatelessWidget {
-  const DriverList({super.key});
+class ClientList extends StatelessWidget {
+  const ClientList({super.key});
 
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<DriversListCubit>(context).getAllDrivers();
-    List<DriverModel> driverList = [];
+    BlocProvider.of<ClintListCubit>(context).getAllClint();
+    List<ClientModel> clientList = [];
     return ConstrainedBox(
       constraints: BoxConstraints(
         maxHeight: MediaQuery.of(context).size.height * 0.8,
@@ -25,30 +25,30 @@ class DriverList extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              'قائمة السائقين',
+              'قائمة العملاء',
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
             // Placeholder for driver list items
-            BlocBuilder<DriversListCubit, DriversListState>(
+            BlocBuilder<ClintListCubit, ClintListState>(
               builder: (context, state) {
-                if (state is DriversListLoading) {
+                if (state is ClintListLoading) {
                   return Center(child: CircularProgressIndicator());
-                } else if (state is DriversListFaluire) {
-                  return Center(child: Text('خطأ في تحميل السائقين: ${state.errorMessage}'));
-                } else if (state is DriversLisSuccess) {
-                  driverList = state.drivers;
+                } else if (state is ClintListFaluire) {
+                  return Center(child: Text('خطأ في تحميل العملاء: ${state.errorMessage}'));
+                } else if (state is ClintLisSuccess) {
+                  clientList = state.clients;
                 }
-                if (driverList.isEmpty) {
-                  return Center(child: Text('لا يوجد سائقين مسجلين'));
+                if (clientList.isEmpty) {
+                  return Center(child: Text('لا يوجد عملاء مسجلين'));
                 }
                 return Expanded(
                   child: ListView.builder(
-                    itemCount: driverList.length, // Replace with actual driver count
+                    itemCount: clientList.length, // Replace with actual driver count
 
                     itemBuilder: (context, index) {
-                      return DriverItem(
-                        driverModel: driverList[index],
+                      return ClientItem(
+                        clientModel: clientList[index],
                       );
                     },
                   ),
@@ -64,9 +64,9 @@ class DriverList extends StatelessWidget {
   }
 }
 
-class DriverItem extends StatelessWidget {
-  const DriverItem({super.key, required this.driverModel});
-  final DriverModel driverModel;
+class ClientItem extends StatelessWidget {
+  const ClientItem({super.key, required this.clientModel});
+  final ClientModel clientModel;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -87,14 +87,14 @@ class DriverItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Expanded(flex: 2, child: Text('الاسم : ${driverModel.name}')),
+          Expanded(flex: 1, child: Text('الاسم : ${clientModel.name}')),
           Expanded(
-            flex: 2,
-            child: Text('رقم الهاتف : ${driverModel.phoneNumber}'),
+            flex: 1,
+            child: Text('رقم الهاتف : ${clientModel.phone}'),
           ),
-          Expanded(child: Text('من : ${driverModel.fromCity}')),
-          Expanded(child: Text('الي : ${driverModel.toCity}')),
-          Expanded(child: Text('المقاعد : ${driverModel.seats}')),
+          Expanded(child: Text('من : ${clientModel.fromCity}')),
+          Expanded(child: Text('الي : ${clientModel.toColleage}')),
+        //  Expanded(child: Text('المقاعد : ${driverModel.seats}')),
         ],
       ),
     );
