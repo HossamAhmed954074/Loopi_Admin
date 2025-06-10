@@ -16,6 +16,11 @@ class RegisterDriverBody extends StatelessWidget {
   final TextEditingController seatsController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController imageController = TextEditingController();
+
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+
 
   void dispose() {
     nameController.dispose();
@@ -78,6 +83,7 @@ class RegisterDriverBody extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Form(
+                key: formKey,
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -94,6 +100,10 @@ class RegisterDriverBody extends StatelessWidget {
                       AuthTextFormField(
                         labelText: 'رقم الهوية ',
                         controller: idController,
+                      ),
+                       AuthTextFormField(
+                        labelText: 'رابط الصورة الشخصية من درايف',
+                        controller: imageController,
                       ),
                       const SizedBox(height: 10),
                       AuthTextFormField(
@@ -142,6 +152,9 @@ class RegisterDriverBody extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
+                          if (!formKey.currentState!.validate()) {
+                            return;
+                          }
                           BlocProvider.of<DriverRegisterCubit>(
                             context,
                           ).registerDriver(
@@ -155,6 +168,7 @@ class RegisterDriverBody extends StatelessWidget {
                             toCity: toCityController.text,
                             plateNumber: plateNumberController.text,
                             seats: int.parse(seatsController.text),
+                            image: imageController.text,
                           );
                         },
                         child: const Text('أنشاء حساب سائق جديد'),

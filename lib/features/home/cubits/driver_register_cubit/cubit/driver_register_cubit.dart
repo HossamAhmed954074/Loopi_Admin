@@ -19,6 +19,7 @@ class DriverRegisterCubit extends Cubit<DriverRegisterState> {
     required String toCity,
     required String plateNumber,
     required int seats,
+    required String? image,
   }) async {
     emit(DriverRegisterLoading());
 
@@ -35,6 +36,7 @@ class DriverRegisterCubit extends Cubit<DriverRegisterState> {
         'to_city': toCity,
         'plate_number': plateNumber,
         'seats': seats,
+        'driver_image': image ?? '1BzVYUDJCilePhXHGfaUAifcsZZwOIaKE',
       });
 
       emit(DriverRegisterSuccess());

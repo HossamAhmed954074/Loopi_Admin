@@ -83,15 +83,18 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               flex: 1,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 16,
+                ),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.cyanAccent,
+                    color: Colors.cyanAccent.withAlpha(80),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Column(
                     // mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       SizedBox(height: 50),
                       Text('كل الرحلات '),
@@ -124,12 +127,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             vertical: 20.0,
                             horizontal: 5,
                           ),
-                          child: Text(
-                            'رسائل العملاء ',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                          child: Center(
+                            child: Text(
+                              'رسائل العملاء ',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                         ),
@@ -146,12 +151,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             vertical: 20.0,
                             horizontal: 5,
                           ),
-                          child: Text(
-                            'قائمة العملاء',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                          child: Center(
+                            child: Text(
+                              'قائمة العملاء',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                         ),
@@ -168,12 +175,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             vertical: 20.0,
                             horizontal: 5,
                           ),
-                          child: Text(
-                            'رسائل السائقين',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                          child: Center(
+                            child: Text(
+                              'رسائل السائقين',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                         ),
@@ -190,12 +199,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             vertical: 20.0,
                             horizontal: 5,
                           ),
-                          child: Text(
-                            'قائمة السائقين',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                          child: Center(
+                            child: Text(
+                              'قائمة السائقين',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                         ),
@@ -212,12 +223,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             vertical: 20.0,
                             horizontal: 5,
                           ),
-                          child: Text(
-                            'أضافة سائق جديد',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                          child: Center(
+                            child: Text(
+                              'أضافة سائق جديد',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                         ),
