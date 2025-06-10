@@ -78,7 +78,7 @@ class ClientItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
+            color: Colors.grey.withAlpha(2),
             spreadRadius: 1,
             blurRadius: 5,
             offset: Offset(0, 3), // changes position of shadow
