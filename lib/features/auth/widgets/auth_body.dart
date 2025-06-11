@@ -23,6 +23,12 @@ class AuthBody extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          ClipOval(
+            child: SizedBox.fromSize(
+              size: Size.fromRadius(70), // Image radius
+              child: Image.asset('assets/images/loopi.png', fit: BoxFit.cover),
+            ),
+          ),
           const Text(
             'Loopi Admin',
             style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
@@ -46,7 +52,6 @@ class AuthBody extends StatelessWidget {
                   passwordController.text.trim(),
                 );
                 // Handle login logic here
-              
               }
             },
           ),

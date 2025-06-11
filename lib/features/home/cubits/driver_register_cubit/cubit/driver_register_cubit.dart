@@ -28,6 +28,7 @@ class DriverRegisterCubit extends Cubit<DriverRegisterState> {
           .createUserWithEmailAndPassword(email: email, password: password);
       FirebaseFirestore firestore = FirebaseFirestore.instance;
       await firestore.collection('drivers').doc(email).set({
+        'email': email,
         'id': id,
         'name': name,
         'phone_number': phoneNumber,
@@ -36,6 +37,7 @@ class DriverRegisterCubit extends Cubit<DriverRegisterState> {
         'to_city': toCity,
         'plate_number': plateNumber,
         'seats': seats,
+        'free_seats' : 0,
         'driver_image': image ?? '1BzVYUDJCilePhXHGfaUAifcsZZwOIaKE',
       });
 

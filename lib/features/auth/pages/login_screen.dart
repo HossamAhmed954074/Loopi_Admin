@@ -25,7 +25,7 @@ class LoginScreen extends StatelessWidget {
         body: BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {
             if (state is AuthLoading) {
-              // Optionally, show a loading indicator using a dialog or overlay
+             
               showDialog(
                 context: context,
                 barrierDismissible: false,

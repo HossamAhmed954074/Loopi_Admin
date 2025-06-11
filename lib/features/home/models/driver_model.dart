@@ -7,6 +7,8 @@ class DriverModel {
   final String? toCity;
   final String? plateNumber;
   final int? seats;
+  final int freeSeats;
+  final String driverEmail;
   
 
   DriverModel({
@@ -18,6 +20,9 @@ class DriverModel {
     required this.toCity,
     required this.plateNumber,
     required this.seats,
+    required this.freeSeats,
+    required this.driverEmail,
+  
     
   });
 
@@ -31,22 +36,12 @@ class DriverModel {
       toCity: json['to_city'] as String,
       plateNumber: json['plate_number'] as String,
       seats: json['seats'] as int,
+      freeSeats: json['free_seats'] as int,
+      driverEmail: json['email'] as String,
     
-
-     
     );
   }
+    
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'phone_number': phoneNumber,
-      'address': address,
-      'from_city': fromCity,
-      'to_city': toCity,
-      'plate_number': plateNumber,
-      'seats': seats,
-    };
-  }
+  
 }
