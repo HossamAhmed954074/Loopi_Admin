@@ -29,12 +29,15 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-             ClipOval(
-            child: SizedBox.fromSize(
-              size: Size.fromRadius(25), // Image radius
-              child: Image.asset('assets/images/loopi.png', fit: BoxFit.cover),
+            ClipOval(
+              child: SizedBox.fromSize(
+                size: Size.fromRadius(25), // Image radius
+                child: Image.asset(
+                  'assets/images/loopi.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
-          ),
             SizedBox(width: 10),
             Text('الصفحة الرئيسية لوحدة التحكم الإدارية Loopi'),
           ],
@@ -62,23 +65,20 @@ class _HomeScreenState extends State<HomeScreen> {
                       MultiBlocProvider(
                         providers: [
                           BlocProvider(create: (context) => TripsListCubit()),
-                      
                         ],
                         child: AllTrips(),
                       ),
-                       if (_selectedScreenIndex == 2)
+                    if (_selectedScreenIndex == 2)
                       MultiBlocProvider(
                         providers: [
                           BlocProvider(create: (context) => TripsListCubit()),
-                          
                         ],
                         child: AllRunningTrips(),
                       ),
-                        if (_selectedScreenIndex == 3)
+                    if (_selectedScreenIndex == 3)
                       MultiBlocProvider(
                         providers: [
                           BlocProvider(create: (context) => TripsListCubit()),
-                          
                         ],
                         child: AllCompleteTrips(),
                       ),
@@ -104,6 +104,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     if (_selectedScreenIndex == 0)
                       Column(
                         children: [
+                          ClipOval(
+                            child: SizedBox.fromSize(
+                              size: Size.fromRadius(77),
+                              child: Image.asset(
+                                'assets/images/loopi.png',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
                           SizedBox(height: 20),
                           Text(
                             'مرحبًا بك في وحدة التحكم الإدارية',
@@ -160,7 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       Divider(height: 2, color: Colors.black),
-                       InkWell(
+                      InkWell(
                         onTap: () {
                           _selectedScreenIndex = 2;
                           setState(() {});
@@ -206,7 +215,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       Divider(height: 2, color: Colors.black),
-                     
 
                       InkWell(
                         onTap: () {

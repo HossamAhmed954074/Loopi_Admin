@@ -2,8 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:loopi_admin/features/home/models/trip_model.dart';
 import 'package:meta/meta.dart';
-
 part 'trips_list_state.dart';
+
 
 class TripsListCubit extends Cubit<TripsListState> {
   TripsListCubit() : super(TripsListInitial());
@@ -29,6 +29,7 @@ class TripsListCubit extends Cubit<TripsListState> {
             .collection('users')
             .doc(docID)
             .collection('tikets')
+            .orderBy('dateTime', descending: false)
             .get()
             .then((value) {
               for (var element in value.docs) {
@@ -169,13 +170,12 @@ class TripsListCubit extends Cubit<TripsListState> {
             .then((value) {
               for (var element in value.docs) {
                 if (element.data()['isAccepted'] == true &&
-                    element.data()['isArrived'] == true && 
-                    element.data()['isPackUp'] == true) {  
-                allPrice += element.data()['price'];
-              }
+                    element.data()['isArrived'] == true &&
+                    element.data()['isPackUp'] == true) {
+                  allPrice += element.data()['price'];
+                }
               }
             });
-      
       }
       emit(TripsPrice(price: allPrice));
     } catch (e) {
